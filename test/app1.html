@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>应用分类排序展示</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .category {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .category h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .app-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .app {
+            width: calc((100% - 50px) / 6);
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .app .sub-items {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            min-width: 100%;
+            z-index: 1;
+        }
+
+        .app:hover .sub-items {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 768px) {
+            .app {
+                width: calc((100% - 30px) / 4);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app {
+                width: calc((100% - 10px) / 2);
+            }
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 分类容器 -->
+    <div id="app-categories">
+        <!-- 第一类应用 -->
+        <div class="category">
+            <h2>办公类应用</h2>
+            <div class="app-container" id="office-apps">
+                <div class="app" title="一款流行的文字处理软件">
+                    Word
+                    <div class="sub-items">
+                        <p onclick="start()">文档编辑</p>
+                        <p>格式设置</p>
+                        <p>协作功能</p>
+                    </div>
+                </div>
+                <div class="app">
+                    Excel
+                    <div class="sub-items">
+                        <p>数据处理</p>
+                        <p>图表制作</p>
+                        <p>公式计算</p>
+                    </div>
+                </div>
+                <div class="app">
+                    PowerPoint
+                    <div class="sub-items">
+                        <p>幻灯片设计</p>
+                        <p>动画效果</p>
+                        <p>演示模式</p>
+                    </div>
+                </div>
+                <div class="app">
+                    Outlook
+                    <div class="sub-items">
+                        <p>邮件收发</p>
+                        <p>日程管理</p>
+                        <p>联系人管理</p>
+                    </div>
+                </div>
+                <div class="app">
+                    OneNote
+                    <div class="sub-items">
+                        <p>笔记记录</p>
+                        <p>分类整理</p>
+                        <p>附件添加</p>
+                    </div>
+                </div>
+                <div class="app">
+                    WPS 办公软件
+                    <div class="sub-items">
+                        <p>文字处理</p>
+                        <p>表格制作</p>
+                        <p>演示文稿</p>
+                    </div>
+                </div>
+                <div class="app">
+                    永中 Office
+                    <div class="sub-items">
+                        <p>集成办公</p>
+                        <p>兼容性好</p>
+                        <p>云端存储</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 第二类应用 -->
+        <div class="category">
+            <h2>娱乐类应用</h2>
+            <div class="app-container" id="entertainment-apps">
+                <div class="app">
+                    腾讯视频
+                    <div class="sub-items">
+                        <p>电视剧</p>
+                        <p>电影</p>
+                        <p>综艺</p>
+                    </div>
+                </div>
+                <div class="app">
+                    爱奇艺
+                    <div class="sub-items">
+                        <p>独家剧集</p>
+                        <p>动漫</p>
+                        <p>纪录片</p>
+                    </div>
+                </div>
+                <div class="app">
+                    优酷
+                    <div class="sub-items">
+                        <p>热门影视</p>
+                        <p>自制节目</p>
+                        <p>体育赛事</p>
+                    </div>
+                </div>
+                <div class="app">
+                    网易云音乐
+                    <div class="sub-items">
+                        <p>海量音乐库</p>
+                        <p>个性化推荐</p>
+                        <p>社区互动</p>
+                    </div>
+                </div>
+                <div class="app">
+                    QQ 音乐
+                    <div class="sub-items">
+                        <p>正版音乐</p>
+                        <p>歌手专区</p>
+                        <p>高品质音效</p>
+                    </div>
+                </div>
+                <div class="app">
+                    抖音
+                    <div class="sub-items">
+                        <p>短视频创作</p>
+                        <p>直播功能</p>
+                        <p>热门挑战</p>
+                    </div>
+                </div>
+                <div class="app">
+                    B 站
+                    <div class="sub-items">
+                        <p>动画番剧</p>
+                        <p>游戏视频</p>
+                        <p>知识科普</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 排序按钮 -->
+    <button onclick="sortAllCategories()">按字母排序所有应用</button>
+
+    <script>
+        function sortAllCategories() {
+            const categories = document.querySelectorAll('.category');
+            categories.forEach(category => {
+                const appContainer = category.querySelector('.app-container');
+                const apps = Array.from(appContainer.children);
+                apps.sort((a, b) => a.textContent.localeCompare(b.textContent));
+                apps.forEach(app => appContainer.appendChild(app));
+            });
+        }
+
+        function start(){
+            alert(123)
+        }
+    </script>
+</body>
+
+</html>

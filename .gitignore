@@ -1,0 +1,4 @@
+node_modules/
+SysinternalsSuite/*
+!SysinternalsSuite/*.md
+dist/

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>应用分类排序展示</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .category {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .category h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .app-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .app {
+            width: calc((100% - 50px) / 6);
+            /* 考虑到 5 个间隙，每个 10px */
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .app {
+                width: calc((100% - 30px) / 4);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app {
+                width: calc((100% - 10px) / 2);
+            }
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 分类容器 -->
+    <div id="app-categories">
+        <!-- 第一类应用 -->
+        <div class="category">
+            <h2>办公类应用</h2>
+            <div class="app-container" id="office-apps">
+                <div class="app" onclick="start()" title="一款流行的文字处理软件">Word</div>
+                <div class="app">Excel</div>
+                <div class="app">PowerPoint</div>
+                <div class="app">Outlook</div>
+                <div class="app">OneNote</div>
+                <div class="app">WPS 办公软件</div>
+                <div class="app">永中 Office</div>
+            </div>
+        </div>
+        <!-- 第二类应用 -->
+        <div class="category">
+            <h2>娱乐类应用</h2>
+            <div class="app-container" id="entertainment-apps">
+                <div class="app">腾讯视频</div>
+                <div class="app">爱奇艺</div>
+                <div class="app">优酷</div>
+                <div class="app">网易云音乐</div>
+                <div class="app">QQ 音乐</div>
+                <div class="app">抖音</div>
+                <div class="app">B站</div>
+            </div>
+        </div>
+    </div>
+    <!-- 排序按钮 -->
+    <button onclick="sortAllCategories()">按字母排序所有应用</button>
+
+    <script>
+        function sortAllCategories() {
+            const categories = document.querySelectorAll('.category');
+            categories.forEach(category => {
+                const appContainer = category.querySelector('.app-container');
+                const apps = Array.from(appContainer.children);
+                apps.sort((a, b) => a.textContent.localeCompare(b.textContent));
+                apps.forEach(app => appContainer.appendChild(app));
+            });
+        }
+        function start(){
+            alert("sdfs")
+        }
+    </script>
+</body>
+
+</html>
